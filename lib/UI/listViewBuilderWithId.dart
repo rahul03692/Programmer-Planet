@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:coding_profiles_app_2/Api_data/http.dart';
 import 'package:coding_profiles_app_2/Styles/list_style.dart';
 import 'package:coding_profiles_app_2/constants/constants.dart';
+import 'package:coding_profiles_app_2/Styles/button_style.dart';
 
 List studentsList = [];
 
@@ -68,15 +69,14 @@ class _ListViewBuilderWithIdState extends State<ListViewBuilderWithId> {
                                 style: kTextStyle,
                               ),
                               Image(
-                                image: AssetImage('images/sad.png'),
+                                image: AssetImage('images/sad.png',),
+                                height: 150,
+                                width: 150,
                               ),
-                              FlatButton(
-                                padding: EdgeInsets.all(10.0),
-                                child: Text('Back', style: TextStyle(
-                                  color: Colors.white,
-                                ),),
-                                color: Colors.lightBlueAccent,
-                                onPressed: () {
+                              SizedBox(height: 5.0,),
+                              Buttons(
+                                text: 'Back',
+                                onpress: () {
                                   Navigator.pop(context);
                                 },
                               ),

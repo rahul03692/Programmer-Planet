@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-//import 'package:coding_profiles_app/Styles/dialog_styles.dart';
 import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:coding_profiles_app_2/constants/constants.dart';
 
@@ -47,13 +46,14 @@ class ListStyles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return Container(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20.0)),
             color: Color(0xff2C2C34),
+
           ),
           //padding: EdgeInsets.only(bottom: 10.0),
           child: Column(
@@ -62,7 +62,19 @@ class ListStyles extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   borderRadius:BorderRadius.only(bottomLeft:Radius.circular(20.0),bottomRight:Radius.circular(20.0),topLeft:Radius.circular(20.0),topRight:Radius.circular(20.0)),
-                  color: Colors.lightBlueAccent,
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    stops: [
+                      0.2,
+                      0.9,
+                    ],
+                    colors: [
+                      //Color(0xffFFCC70),
+                      Color(0xff4158D0),
+                      Color(0xffC850C0),
+                    ],
+                  ),
                 ),
                 padding: EdgeInsets.all(10.0),
                 child: Row(
@@ -84,6 +96,7 @@ class ListStyles extends StatelessWidget {
                         ),
                       ),
                     ),
+                    SizedBox(width:5.0),
                     Expanded(
                       flex:12,
                       child: Column(
@@ -91,7 +104,7 @@ class ListStyles extends StatelessWidget {
                           AutoSizeText(
                             name,
                             textAlign: TextAlign.center,
-                            style: kTopHeading.copyWith(fontFamily: 'Koho'),
+                            style: kTopHeading.copyWith(fontFamily: 'Ubuntu',color: Colors.white),
                             maxLines: 2,
                           ),
                           SizedBox(
@@ -99,7 +112,7 @@ class ListStyles extends StatelessWidget {
                           ),
                           Text(
                             roll,
-                            style: kTopHeading.copyWith(fontSize: 15.0),
+                            style: kTopHeading.copyWith(fontFamily: 'Ubuntu',fontSize: 18.0),
                           ),
                           SizedBox(height: 5.0,),
                         ],
@@ -130,27 +143,20 @@ class ListStyles extends StatelessWidget {
                               SizedBox(
                                 width: 5.0,
                               ),
-                              WebDetails(text: "HackerRank",score: hrScore,ontap: (){
-                                String st="HackerRank";
-                                showDialog<void>(context: context, builder: (context) => Dialog(st,HR_TEXT));
+                              WebDetails(text: "LeetCode",score: lcScore,ontap: (){
+                                String st="LeetCode";
+                                showDialog<void>(context: context, builder: (context) => Dialog(st,LC_TEXT));
                               },),
                             ],
                           ),
                           //second
                           SizedBox(height: 10.0,),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              WebDetails(text: "LeetCode",score: lcScore,ontap: (){
-                                String st="LeetCode";
-                                showDialog<void>(context: context, builder: (context) => Dialog(st,LC_TEXT));
-                              },),
-                              SizedBox(
-                                width: 5.0,
-                              ),
-                              WebDetails(text: "InterviewBit",score: ibScore,ontap: (){
-                                String st="InterviewBit";
-                                showDialog<void>(context: context, builder: (context) => Dialog(st,IB_TEXT));
+                              WebDetails(text: "Hacker Rank",score: hrScore,ontap: (){
+                                String st="HackerRank";
+                                showDialog<void>(context: context, builder: (context) => Dialog(st,HR_TEXT));
                               },),
                             ],
                           ),
@@ -165,7 +171,7 @@ class ListStyles extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  'Overall Score:',
+                                  'Overall Score :',
                                   style: kHeadingStyle.copyWith(color: Color(0xff2c061f)),
                                 ),
                                 AutoSizeText(
@@ -188,9 +194,6 @@ class ListStyles extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () {
-        print("hello");
-      },
     );
   }
 }
@@ -213,17 +216,27 @@ class WebDetails extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            color: Color(0xffA13529),
+            //color: Color(0xffA13529),
+            //color: Color(0xffFD1657),
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              stops: [
+                0.2,
+                0.9,
+              ],
+              colors: [
+                Color(0xffFD1657),
+                Color(0xfffc6767),
+              ],
+            ),
           ),
           padding: EdgeInsets.all(10.0),
           child:Row(
             children: [
-              Tooltip(
-                message: CC_TEXT,
-                child: Text(
+              AutoSizeText(
                   text,
                   style: kHeadingStyle,
-                ),
               ),
               SizedBox(width:5.0),
               Container(

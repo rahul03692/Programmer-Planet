@@ -32,7 +32,6 @@ dependencies:
   auto_size_text: ^2.1.0
   easy_rich_text: ^0.5.4
   rflutter_alert: ^2.0.2
-  url_launcher: ^6.0.3
 
 dev_dependencies:
   flutter_test:
