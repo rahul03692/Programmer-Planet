@@ -1,4 +1,4 @@
-# coding_profiles_app_2
+# Programmer Planet
 
 A new Flutter project.
 
