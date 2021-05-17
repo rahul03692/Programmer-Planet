@@ -25,7 +25,11 @@ const IB_TEXT="IBS/3";
 const LC_TEXT="20 * LCPS";
 
 const kTextFieldDecoration = InputDecoration(
-  hintText: 'Enter a Roll No',
+  hintText: 'Enter your Roll No',
+  hintStyle: TextStyle(
+    color: Colors.grey,
+    fontFamily: 'Ubuntu',
+  ),
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(32.0)),

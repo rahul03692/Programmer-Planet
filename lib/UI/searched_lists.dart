@@ -15,7 +15,9 @@ class _SearchedListsState extends State<SearchedLists> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Scores List'),
+        title: Text('Scores List',style: TextStyle(
+          fontFamily: 'Ubuntu',
+        ),),
         centerTitle: true,
         backgroundColor: Color(0xff171721),
       ),

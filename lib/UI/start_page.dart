@@ -28,7 +28,7 @@ class _StartPageState extends State<StartPage> {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 stops: [
-                  0.05,
+                  0.0125,
                   0.5,
                   0.9,
                 ],
@@ -56,7 +56,7 @@ class _StartPageState extends State<StartPage> {
                       style: TextStyle(
                         letterSpacing: 1.5,
                         fontFamily: 'Ubuntu',
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.w700,
                         fontSize: 50.0,
                       ),
@@ -64,7 +64,7 @@ class _StartPageState extends State<StartPage> {
                   ),
                   Container(
                     child: AutoSizeText(
-                      'Planet',
+                      '.Planet',
                       style: TextStyle(
                         letterSpacing: 1.5,
                         fontFamily: 'Ubuntu',
@@ -87,15 +87,40 @@ class _StartPageState extends State<StartPage> {
                       onChanged: (value) {
                         roll = value;
                       },
+
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
+                        fontSize: 20.0,
+                        letterSpacing: 1.5,
+                        fontFamily: 'Ubuntu',
+                        fontWeight: FontWeight.bold,
                       ),
                       controller: fieldText,
                       cursorColor: Colors.white,
                       decoration: kTextFieldDecoration.copyWith(
-                        suffixIcon: IconButton(
-                          icon: Icon(Icons.send,color: Colors.cyan,),
-                          onPressed: () {
+                        suffixIcon: Container(
+                          margin: EdgeInsets.all(10.0),
+                          //padding: EdgeInsets.all(5.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100.0),
+                            //color: Color(0xff25d366),
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              stops: [
+                                0.2,
+                                0.9,
+                              ],
+                              colors: [
+                                Color(0xffec008c),
+                                Color(0xfffc6767),
+                              ],
+                            ),
+
+                          ),
+                          child:IconButton(
+                            icon: Icon(Icons.send,color: Colors.white,size: 20.0,),
+                            onPressed: () {
                               roll = roll.trim();
                               if (roll.length != 10) {
                                 return Alert(
@@ -131,7 +156,8 @@ class _StartPageState extends State<StartPage> {
                                   ),
                                 ),
                               );
-                          },
+                            },
+                          ),
                         ),
                       ),
                     ),
