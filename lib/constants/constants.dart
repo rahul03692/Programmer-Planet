@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 
 const kTextStyle = TextStyle(
-  fontSize: 25.0,
+  fontSize: 20.0,
   color: Colors.white,
   fontWeight: FontWeight.bold,
 );
 
 const kHeadingStyle = TextStyle(
-  fontSize: 20.0,
+  fontSize: 25.0,
   color: Colors.white,
   fontWeight: FontWeight.bold,
 );
@@ -19,7 +19,7 @@ const kTopHeading=TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-const HR_TEXT="DS + Algo";
+const HR_TEXT="DS + Algo ";
 const CC_TEXT="CCPS* 10 + (CCR - 1300)2/30";
 const IB_TEXT="IBS/3";
 const LC_TEXT="20 * LCPS";

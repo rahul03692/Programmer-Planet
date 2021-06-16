@@ -42,6 +42,8 @@ class _ListViewBuilderWithIdState extends State<ListViewBuilderWithId> {
                 String name = st['name'];
                 int ccScore = st['codechefSolved'];
                 int hrScore = st['hackerrankSolved'];
+                int hrSiScore=st['siSolved'];
+                int hrPpScore=st['ppSolved'];
                 int ibScore = st['interviewbitSolved'];
                 int lcScore = st['leetcodeSolved'];
                 int overall = st['overall'];
@@ -53,6 +55,8 @@ class _ListViewBuilderWithIdState extends State<ListViewBuilderWithId> {
                     name: name,
                     ccScore: ccScore,
                     hrScore: hrScore,
+                    hrSiScore:hrSiScore,
+                    hrPpScore: hrPpScore,
                     ibScore: ibScore,
                     lcScore: lcScore,
                     overall: overall,

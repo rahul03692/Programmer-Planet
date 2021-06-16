@@ -1,6 +1,6 @@
+import 'package:coding_profiles_app_2/slider.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:coding_profiles_app_2/constants/constants.dart';
 
 class ListStyles extends StatelessWidget {
@@ -12,38 +12,18 @@ class ListStyles extends StatelessWidget {
       this.hrScore,
       this.lcScore,
       this.ibScore,
+      this.hrSiScore,
+      this.hrPpScore,
       this.overall});
   final String roll, name;
-  final int ccScore, hrScore, lcScore, ibScore, pos, overall;
-
-  // ignore: non_constant_identifier_names
-  SimpleDialog Dialog(String st, String score) {
-    return SimpleDialog(
-      title: Text(st),
-      children: [
-        Container(
-          margin: EdgeInsets.all(10.0),
-          padding: EdgeInsets.all(10.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20.0)),
-            color: Color(0xff2C2C34),
-          ),
-          child: EasyRichText(
-            score,
-            textAlign: TextAlign.center,
-            defaultStyle: kTextStyle.copyWith(fontSize: 15.0),
-            patternList: [
-              EasyRichTextPattern(
-                targetString: '2',
-                superScript: true,
-                style: kTextStyle.copyWith(fontSize: 15.0),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
+  final int ccScore,
+      hrScore,
+      lcScore,
+      ibScore,
+      pos,
+      overall,
+      hrSiScore,
+      hrPpScore;
 
   @override
   Widget build(BuildContext context) {
@@ -137,6 +117,7 @@ class ListStyles extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10.0),
+              //NoonLoopingDemo(),
               Container(
                 padding: EdgeInsets.all(10.0),
                 child: Row(
@@ -147,57 +128,16 @@ class ListStyles extends StatelessWidget {
                       flex: 10,
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              WebDetails(
-                                text: "CodeChef",
-                                score: ccScore,
-                                ontap: () {
-                                  String st = "CodeChef";
-                                  showDialog<void>(
-                                      context: context,
-                                      builder: (context) =>
-                                          Dialog(st, CC_TEXT));
-                                },
-                              ),
-                              SizedBox(
-                                width: 5.0,
-                              ),
-                              WebDetails(
-                                text: "LeetCode",
-                                score: lcScore,
-                                ontap: () {
-                                  String st = "LeetCode";
-                                  showDialog<void>(
-                                      context: context,
-                                      builder: (context) =>
-                                          Dialog(st, LC_TEXT));
-                                },
-                              ),
-                            ],
-                          ),
-                          //second
                           SizedBox(
-                            height: 10.0,
+                            child: NoonLoopingDemo(
+                              ccScore: ccScore,
+                              hrScore: hrScore,
+                              lcScore: lcScore,
+                              hrSiScore:hrSiScore,
+                              hrPpScore:hrPpScore,
+                            ),
+                            height: 150.0,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              WebDetails(
-                                text: "Hacker Rank",
-                                score: hrScore,
-                                ontap: () {
-                                  String st = "HackerRank";
-                                  showDialog<void>(
-                                      context: context,
-                                      builder: (context) =>
-                                          Dialog(st, HR_TEXT));
-                                },
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 10.0),
                           Container(
                             padding: EdgeInsets.all(10.0),
                             decoration: BoxDecoration(
@@ -217,7 +157,7 @@ class ListStyles extends StatelessWidget {
                                   overall.toString(),
                                   textAlign: TextAlign.center,
                                   style: kTextStyle.copyWith(
-                                      color: Color(0xff2c061f)),
+                                      color: Color(0xff2c061f),fontSize: 22.0),
                                   maxLines: 1,
                                   minFontSize: 10.0,
                                 ),
@@ -238,75 +178,53 @@ class ListStyles extends StatelessWidget {
   }
 }
 
-class WebDetails extends StatelessWidget {
-  const WebDetails({
-    Key key,
-    @required this.text,
-    @required this.score,
-    @required this.ontap,
-  }) : super(key: key);
-  final int score;
-  final String text;
-  final Function ontap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            //color: Color(0xffA13529),
-            //color: Color(0xffFD1657),
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              stops: [
-                0.2,
-                0.9,
-              ],
-              colors: [
-                Color(0xffFD1657),
-                Color(0xfffc6767),
-              ],
-            ),
-          ),
-          padding: EdgeInsets.all(10.0),
-          child: Row(
-            children: [
-              AutoSizeText(
-                text,
-                style: kHeadingStyle,
-              ),
-              SizedBox(width: 5.0),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                  color: Colors.yellowAccent,
-                ),
-                child: GestureDetector(
-                  child: Icon(
-                    //padding: EdgeInsets.zero,
-                    Icons.info,
-                    color: Colors.black,
-                    size: 20.0,
-                  ),
-                  onTap: ontap,
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 5.0,
-        ),
-        AutoSizeText(
-          score.toString(),
-          style: kHeadingStyle,
-          maxLines: 1,
-          minFontSize: 10.0,
-        ),
-      ],
-    );
-  }
-}
+// Row(
+//   mainAxisAlignment: MainAxisAlignment.spaceAround,
+//   children: [
+//     WebDetails(
+//       text: "CodeChef",
+//       score: ccScore,
+//       ontap: () {
+//         String st = "CodeChef";
+//         showDialog<void>(
+//             context: context,
+//             builder: (context) =>
+//                 Dialog(st, CC_TEXT));
+//       },
+//     ),
+//     SizedBox(
+//       width: 5.0,
+//     ),
+//     WebDetails(
+//       text: "LeetCode",
+//       score: lcScore,
+//       ontap: () {
+//         String st = "LeetCode";
+//         showDialog<void>(
+//             context: context,
+//             builder: (context) =>
+//                 Dialog(st, LC_TEXT));
+//       },
+//     ),
+//   ],
+// ),
+// //second
+// SizedBox(
+//   height: 10.0,
+// ),
+// Row(
+//   mainAxisAlignment: MainAxisAlignment.center,
+//   children: [
+//     WebDetails(
+//       text: "Hacker Rank",
+//       score: hrScore,
+//       ontap: () {
+//         String st = "HackerRank";
+//         showDialog<void>(
+//             context: context,
+//             builder: (context) =>
+//                 Dialog(st, HR_TEXT));
+//       },
+//     ),
+//   ],
+// ),
